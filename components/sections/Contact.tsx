@@ -1,0 +1,84 @@
+"use client";
+
+import Button from "@/components/ui/Button";
+import { motion } from "framer-motion";
+
+export default function Contact() {
+    return (
+        <section id="contact" className="py-32 bg-transparent text-black relative overflow-hidden">
+
+            <div className="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-16">
+                <div>
+                    <h2 className="text-6xl md:text-8xl font-bold uppercase tracking-tighter leading-none mb-8">
+                        Let's <br />
+                        <motion.span
+                            initial={{
+                                WebkitTextStroke: "1px black",
+                                color: "transparent"
+                            }}
+                            whileInView={{
+                                WebkitTextStroke: "0px black",
+                                color: "#1C1C1C"
+                            }}
+                            viewport={{ once: true, margin: "-10%" }}
+                            transition={{ duration: 1.0, ease: "easeOut" }}
+                        >
+                            Talk
+                        </motion.span>
+                    </h2>
+                    <p className="text-xl text-black/60 max-w-md mb-12">
+                        Have a project in mind? We would love to hear from you.
+                        Fill out the form or send us an email.
+                    </p>
+
+                    <div className="space-y-4">
+                        <div className="block">
+                            <span className="text-sm text-black/40 uppercase tracking-widest block mb-1">Email</span>
+                            <a href="mailto:hello@creativeapes.design" className="text-2xl hover:text-black/70 transition-colors">hello@portfolio.design</a>
+                        </div>
+                        <div className="block">
+                            <span className="text-sm text-black/40 uppercase tracking-widest block mb-1">Phone</span>
+                            <a href="tel:+1234567890" className="text-2xl hover:text-black/70 transition-colors">+1 (555) 123-4567</a>
+                        </div>
+                    </div>
+                </div>
+
+                <form className="space-y-8 bg-black/5 p-8 rounded-3xl border border-black/10 backdrop-blur-sm">
+                    <div className="space-y-2">
+                        <label htmlFor="name" className="text-sm uppercase tracking-widest text-black/60">Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            className="w-full bg-transparent border-b border-black/20 py-4 text-xl focus:border-black focus:outline-none transition-colors text-black placeholder:text-black/30"
+                            placeholder="What's your name?"
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <label htmlFor="email" className="text-sm uppercase tracking-widest text-black/60">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            className="w-full bg-transparent border-b border-black/20 py-4 text-xl focus:border-black focus:outline-none transition-colors text-black placeholder:text-black/30"
+                            placeholder="Your email address"
+                        />
+                    </div>
+
+                    <div className="space-y-2">
+                        <label htmlFor="message" className="text-sm uppercase tracking-widest text-black/60">Message</label>
+                        <textarea
+                            id="message"
+                            rows={4}
+                            className="w-full bg-transparent border-b border-black/20 py-4 text-xl focus:border-black focus:outline-none transition-colors resize-none text-black placeholder:text-black/30"
+                            placeholder="Tell us about your project..."
+                        />
+                    </div>
+
+                    <div className="pt-4">
+                        <Button className="w-full">Send Message</Button>
+                    </div>
+                </form>
+            </div>
+        </section>
+    );
+}
