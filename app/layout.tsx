@@ -3,11 +3,12 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import ScrollToTop from "@/components/utils/ScrollToTop";
 import SmoothScroller from "@/components/utils/SmoothScroller";
+import Cursor from "@/components/ui/Cursor";
+import Noise from "@/components/ui/Noise";
 
 const inter = Inter({
-  variable: "--font-inter",
   subsets: ["latin"],
-  display: "swap",
+  variable: "--font-inter",
 });
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="cursor-none">
       <head>
         <script
           dangerouslySetInnerHTML={{
@@ -30,8 +31,10 @@ export default function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} bg-background text-foreground antialiased selection:bg-black selection:text-white`}
+        className={`${inter.variable} bg-background text-foreground antialiased selection:bg-black selection:text-white cursor-none`}
       >
+        <Noise />
+        <Cursor />
         <SmoothScroller />
         {children}
       </body>

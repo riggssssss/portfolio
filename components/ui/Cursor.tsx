@@ -6,6 +6,7 @@ import { motion } from "framer-motion";
 export default function Cursor() {
     const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
     const [isHovering, setIsHovering] = useState(false);
+    const [isClicking, setIsClicking] = useState(false);
 
     useEffect(() => {
         const updateMousePosition = (e: MouseEvent) => {
@@ -27,29 +28,41 @@ export default function Cursor() {
             }
         };
 
+        const handleMouseDown = () => setIsClicking(true);
+        const handleMouseUp = () => setIsClicking(false);
+
         window.addEventListener("mousemove", updateMousePosition);
         window.addEventListener("mouseover", handleMouseOver);
+        window.addEventListener("mousedown", handleMouseDown);
+        window.addEventListener("mouseup", handleMouseUp);
 
         return () => {
             window.removeEventListener("mousemove", updateMousePosition);
             window.removeEventListener("mouseover", handleMouseOver);
+            window.removeEventListener("mousedown", handleMouseDown);
+            window.removeEventListener("mouseup", handleMouseUp);
         };
     }, []);
 
     return (
         <motion.div
-            className="fixed top-0 left-0 w-4 h-4 bg-black rounded-full pointer-events-none z-[9999] mix-blend-difference"
+            className="fixed top-0 left-0 w-5 h-5 bg-black rounded-full pointer-events-none z-[9999]"
+            style={{
+                translateX: "-50%",
+                translateY: "-50%",
+                mixBlendMode: "normal"
+            }}
             animate={{
-                x: mousePosition.x - (isHovering ? 32 : 8),
-                y: mousePosition.y - (isHovering ? 32 : 8),
-                scale: isHovering ? 4 : 1,
-                opacity: isHovering ? 0.5 : 1,
+                x: mousePosition.x,
+                y: mousePosition.y,
+                scale: isClicking ? 0.8 : (isHovering ? 0.5 : 1),
+                backgroundColor: isHovering ? "#CCFF00" : (isClicking ? "#FF0055" : "#1C1C1C"),
             }}
             transition={{
                 type: "spring",
-                stiffness: 150,
-                damping: 15,
-                mass: 0.1,
+                stiffness: 300,
+                damping: 20,
+                mass: 0.5,
             }}
         />
     );

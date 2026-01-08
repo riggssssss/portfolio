@@ -2,21 +2,22 @@
 
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
+import Button from "@/components/ui/Button";
 import { motion, AnimatePresence } from "framer-motion";
+import Magnetic from "@/components/ui/Magnetic"; // Added import
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "#about" },
-    { name: "Work", href: "#work" },
-    { name: "Services", href: "#services" },
-    { name: "Contact", href: "#contact" },
+const navItems = [
+    { name: "Services", href: "/#services" },
+    { name: "Work", href: "/work" }, // Updated to new page
+    { name: "About", href: "/#about" },
+    { name: "Contact", href: "/#contact" },
 ];
 
 export default function Header() {
     const [isScrolled, setIsScrolled] = useState(false);
-    const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -27,66 +28,69 @@ export default function Header() {
     }, []);
 
     return (
-        <header
-            className={cn(
-                "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-                isScrolled ? "py-4 bg-background/80 backdrop-blur-md border-b border-black/5" : "py-8 bg-transparent"
-            )}
+        <motion.header
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.5 }}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "py-4 bg-white/80 backdrop-blur-md border-b border-black/5" : "py-8 bg-transparent"
+                }`}
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
-                <Link href="/" className="text-2xl font-bold uppercase tracking-tighter hover:text-black/70 transition-colors text-black">
-                    Portfolio<span className="text-black">.</span>
+                <Link href="/" className="text-2xl font-bold uppercase tracking-tighter relative z-50">
+                    Portfolio<span className="text-[#CCFF00]">.</span> {/* Little accent if we want, or keep it black */}
                 </Link>
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-8">
-                    {navLinks.map((link, index) => (
-                        <React.Fragment key={link.name}>
+                    {navItems.map((item) => (
+                        <Magnetic key={item.name}>
                             <Link
-                                href={link.href}
-                                className="text-sm font-medium hover:text-black/60 transition-colors uppercase tracking-wide text-black"
+                                href={item.href}
+                                className="text-sm font-medium uppercase tracking-widest hover:opacity-50 transition-opacity"
                             >
-                                {link.name}
+                                {item.name}
                             </Link>
-                            {index < navLinks.length - 1 && (
-                                <span className="text-black/20">,</span>
-                            )}
-                        </React.Fragment>
+                        </Magnetic>
                     ))}
+                    <Button href="/#contact" variant="primary" className="ml-4">Let's Talk</Button>
                 </nav>
 
                 {/* Mobile Toggle */}
                 <button
-                    className="md:hidden text-black"
-                    onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                    className="md:hidden relative z-50 p-2"
+                    onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 >
-                    {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+                    <div className={`w-6 h-0.5 bg-black mb-1.5 transition-all ${mobileMenuOpen ? "rotate-45 translate-y-2" : ""}`} />
+                    <div className={`w-6 h-0.5 bg-black mb-1.5 transition-all ${mobileMenuOpen ? "opacity-0" : ""}`} />
+                    <div className={`w-6 h-0.5 bg-black transition-all ${mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
                 </button>
             </div>
-            {/* Mobile Nav */}
+
+            {/* Mobile Menu Overlay */}
             <AnimatePresence>
-                {isMobileMenuOpen && (
+                {mobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
+                        initial={{ opacity: 0, y: "-100%" }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="absolute top-full left-0 right-0 bg-black border-t border-white/10 p-6 md:hidden"
+                        exit={{ opacity: 0, y: "-100%" }}
+                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                        className="fixed inset-0 bg-background flex flex-col items-center justify-center z-40"
                     >
-                        <nav className="flex flex-col gap-4">
-                            {navLinks.map((link) => (
+                        <nav className="flex flex-col items-center gap-8">
+                            {navItems.map((item) => (
                                 <Link
-                                    key={link.name}
-                                    href={link.href}
-                                    className="text-lg font-medium hover:text-neon-lime transition-colors uppercase"
-                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    key={item.name}
+                                    href={item.href}
+                                    className="text-4xl font-bold uppercase tracking-tighter"
+                                    onClick={() => setMobileMenuOpen(false)}
                                 >
-                                    {link.name}
+                                    {item.name}
                                 </Link>
                             ))}
                         </nav>
                     </motion.div>
                 )}
             </AnimatePresence>
-        </header>
+        </motion.header>
     );
 }

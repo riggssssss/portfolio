@@ -8,16 +8,30 @@ export default function Hero() {
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
             <div className="container mx-auto px-6 relative z-10 text-center">
                 <motion.div
-                    initial={{ opacity: 0, y: 50 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, ease: "easeOut" }}
+                    initial="hidden"
+                    animate="visible"
+                    variants={{
+                        hidden: { opacity: 0 },
+                        visible: {
+                            opacity: 1,
+                            transition: {
+                                staggerChildren: 0.2, // Stagger effect
+                                delayChildren: 0.3,
+                            }
+                        }
+                    }}
                     className="mb-8"
                 >
-                    <span className="inline-block px-4 py-1.5 rounded-full border border-black text-black text-sm tracking-wider uppercase mb-6">
+                    <motion.span
+                        variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] } } }}
+                        className="inline-block px-4 py-1.5 rounded-full border border-black text-black text-sm tracking-wider uppercase mb-6"
+                    >
                         Available for freelance work
-                    </span>
+                    </motion.span>
                     <h1 className="text-7xl md:text-[10rem] font-bold tracking-tighter uppercase leading-none mb-6 text-black">
-                        Creative <br />
+                        <motion.div variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } } }}>
+                            Creative <br />
+                        </motion.div>
                         <span>
                             <motion.span
                                 initial={{

@@ -7,9 +7,9 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="bg-transparent py-20 border-t border-black/10 text-black">
-            <div className="container mx-auto px-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+        <footer className="fixed bottom-0 left-0 w-full bg-deep-black text-white py-20 -z-10" style={{ height: '500px' }}>
+            <div className="container mx-auto px-6 h-full flex flex-col justify-between">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                     <div className="lg:col-span-2">
                         <Link href="/" className="text-3xl font-bold uppercase tracking-tighter mb-6 block">
                             Portfolio<span className="text-black">.</span>

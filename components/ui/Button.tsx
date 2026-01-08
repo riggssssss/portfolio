@@ -1,53 +1,43 @@
 "use client";
 
-import { cn } from "@/lib/utils";
-import React from "react";
+import { ButtonHTMLAttributes, ReactNode } from "react";
 import Link from "next/link";
-import { motion } from "framer-motion";
+import { cn } from "@/lib/utils";
+import Magnetic from "./Magnetic";
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-    href?: string;
+interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     variant?: "primary" | "outline" | "ghost";
+    href?: string;
+    children: ReactNode;
+    className?: string; // Add className prop
 }
 
-export default function Button({
-    className,
-    children,
-    href,
-    variant = "primary",
-    ...props
-}: ButtonProps) {
-    const baseStyles =
-        "relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-medium transition-all duration-300 rounded-full group";
+export default function Button({ variant = "primary", href, children, className, ...props }: ButtonProps) {
+    const baseStyles = "inline-flex items-center justify-center px-8 py-4 rounded-full text-sm font-medium transition-all duration-300 transform border tracking-widest uppercase cursor-none";
 
     const variants = {
-        primary: "bg-black text-white hover:bg-white hover:text-black border border-black",
-        outline: "border border-black text-black hover:bg-black hover:text-white",
-        ghost: "text-black hover:text-black/60",
+        primary: "bg-deep-black text-white hover:bg-black/90 border-transparent",
+        outline: "bg-transparent text-deep-black border-black hover:bg-black hover:text-white",
+        ghost: "bg-transparent text-deep-black border-transparent hover:bg-black/5",
     };
 
-    const content = (
-        <>
-            <span className="relative z-10 font-bold tracking-wide uppercase text-sm">
-                {children}
-            </span>
-            {variant === "primary" && (
-                <div className="absolute inset-0 w-full h-full bg-white opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            )}
-        </>
-    );
+    const combinedStyles = cn(baseStyles, variants[variant], className);
 
     if (href) {
         return (
-            <Link href={href} className={cn(baseStyles, variants[variant], className)}>
-                {content}
-            </Link>
+            <Magnetic>
+                <Link href={href} className={combinedStyles}>
+                    {children}
+                </Link>
+            </Magnetic>
         );
     }
 
     return (
-        <button className={cn(baseStyles, variants[variant], className)} {...props}>
-            {content}
-        </button>
+        <Magnetic>
+            <button className={combinedStyles} {...props}>
+                {children}
+            </button>
+        </Magnetic>
     );
 }
