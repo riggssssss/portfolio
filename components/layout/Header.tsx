@@ -4,6 +4,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Button from "@/components/ui/Button";
 import { motion, AnimatePresence } from "framer-motion";
+import TransitionLink from "@/components/utils/TransitionLink";
 import Magnetic from "@/components/ui/Magnetic"; // Added import
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
@@ -32,27 +33,38 @@ export default function Header() {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.5 }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "py-4 bg-white/80 backdrop-blur-md border-b border-black/5" : "py-8 bg-transparent"
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "py-4 bg-[#1C1C1C]/90 backdrop-blur-md border-b border-[#FDC5D5]/10" : "py-8 bg-transparent"
                 }`}
         >
             <div className="container mx-auto px-6 flex items-center justify-between">
-                <Link href="/" className="text-2xl font-bold uppercase tracking-tighter relative z-50">
-                    Portfolio<span className="text-[#CCFF00]">.</span> {/* Little accent if we want, or keep it black */}
-                </Link>
+                <TransitionLink href="/" className={`text-2xl font-bold uppercase tracking-tighter relative z-50 transition-colors duration-300 ${isScrolled ? "text-[#FDC5D5]" : "text-black"
+                    }`}>
+                    Portfolio<span className={isScrolled ? "text-white" : "text-[#FDC5D5]"}>.</span>
+                </TransitionLink>
 
                 {/* Desktop Nav */}
                 <nav className="hidden md:flex items-center gap-8">
                     {navItems.map((item) => (
                         <Magnetic key={item.name}>
-                            <Link
+                            <TransitionLink
                                 href={item.href}
-                                className="text-sm font-medium uppercase tracking-widest hover:opacity-50 transition-opacity"
+                                className={`text-sm font-medium uppercase tracking-widest hover:opacity-50 transition-all duration-300 ${isScrolled ? "text-[#FDC5D5]" : "text-black"
+                                    }`}
                             >
                                 {item.name}
-                            </Link>
+                            </TransitionLink>
                         </Magnetic>
                     ))}
-                    <Button href="/#contact" variant="primary" className="ml-4">Let's Talk</Button>
+                    {/* Custom Button Style for Sticky Header */}
+                    <Button
+                        href="/#contact"
+                        variant="primary"
+                        className={`ml-4 transition-all duration-300 ${isScrolled
+                            ? "!bg-transparent !text-[#FDC5D5] !border-[#FDC5D5] hover:!bg-[#FDC5D5] hover:!text-black"
+                            : ""}`}
+                    >
+                        Let's Talk
+                    </Button>
                 </nav>
 
                 {/* Mobile Toggle */}
@@ -60,9 +72,9 @@ export default function Header() {
                     className="md:hidden relative z-50 p-2"
                     onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 >
-                    <div className={`w-6 h-0.5 bg-black mb-1.5 transition-all ${mobileMenuOpen ? "rotate-45 translate-y-2" : ""}`} />
-                    <div className={`w-6 h-0.5 bg-black mb-1.5 transition-all ${mobileMenuOpen ? "opacity-0" : ""}`} />
-                    <div className={`w-6 h-0.5 bg-black transition-all ${mobileMenuOpen ? "-rotate-45 -translate-y-2" : ""}`} />
+                    <div className={`w-6 h-0.5 mb-1.5 transition-all ${isScrolled ? "bg-[#FDC5D5]" : "bg-black"} ${mobileMenuOpen ? "rotate-45 translate-y-2 !bg-black" : ""}`} />
+                    <div className={`w-6 h-0.5 mb-1.5 transition-all ${isScrolled ? "bg-[#FDC5D5]" : "bg-black"} ${mobileMenuOpen ? "opacity-0" : ""}`} />
+                    <div className={`w-6 h-0.5 transition-all ${isScrolled ? "bg-[#FDC5D5]" : "bg-black"} ${mobileMenuOpen ? "-rotate-45 -translate-y-2 !bg-black" : ""}`} />
                 </button>
             </div>
 

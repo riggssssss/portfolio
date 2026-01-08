@@ -7,24 +7,24 @@ export default function Footer() {
     const currentYear = new Date().getFullYear();
 
     return (
-        <footer className="fixed bottom-0 left-0 w-full bg-deep-black text-white py-20 -z-10" style={{ height: '500px' }}>
+        <footer className="fixed bottom-0 left-0 w-full bg-[#1C1C1C] text-[#FDC5D5] py-20 -z-10" style={{ height: '500px' }}>
             <div className="container mx-auto px-6 h-full flex flex-col justify-between">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
                     <div className="lg:col-span-2">
                         <Link href="/" className="text-3xl font-bold uppercase tracking-tighter mb-6 block">
-                            Portfolio<span className="text-black">.</span>
+                            Portfolio<span className="text-white">.</span>
                         </Link>
-                        <p className="text-black/60 max-w-md text-lg">
+                        <p className="text-[#FDC5D5]/60 max-w-md text-lg">
                             Crafting digital experiences that blend creativity with technology. Use this space to describe your mission.
                         </p>
                     </div>
 
                     <div>
-                        <h4 className="text-black/40 uppercase text-sm tracking-wider mb-8">Navigation</h4>
+                        <h4 className="text-[#FDC5D5]/40 uppercase text-sm tracking-wider mb-8">Navigation</h4>
                         <ul className="flex flex-col gap-4">
                             {["Home", "About", "Work", "Services", "Contact"].map((item) => (
                                 <li key={item}>
-                                    <Link href={`#${item.toLowerCase()}`} className="text-black hover:text-black/60 transition-colors">
+                                    <Link href={`#${item.toLowerCase()}`} className="text-[#FDC5D5] hover:text-[#FDC5D5]/60 transition-colors">
                                         {item}
                                     </Link>
                                 </li>
@@ -33,11 +33,11 @@ export default function Footer() {
                     </div>
 
                     <div>
-                        <h4 className="text-black/40 uppercase text-sm tracking-wider mb-8">Socials</h4>
+                        <h4 className="text-[#FDC5D5]/40 uppercase text-sm tracking-wider mb-8">Socials</h4>
                         <ul className="flex flex-col gap-4">
                             {["Twitter", "LinkedIn", "Instagram", "GitHub"].map((item) => (
                                 <li key={item}>
-                                    <Link href="#" className="flex items-center gap-2 text-black hover:text-black/60 transition-colors group">
+                                    <Link href="#" className="flex items-center gap-2 text-[#FDC5D5] hover:text-[#FDC5D5]/60 transition-colors group">
                                         {item}
                                         <ArrowUpRight size={16} className="opacity-0 group-hover:opacity-100 transition-opacity" />
                                     </Link>
@@ -47,11 +47,11 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-black/10 text-black/40 text-sm">
+                <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-[#FDC5D5]/20 text-[#FDC5D5]/40 text-sm">
                     <p>© {currentYear} Creative Developer. All rights reserved.</p>
                     <div className="flex gap-8 mt-4 md:mt-0">
-                        <Link href="#" className="hover:text-black transition-colors">Privacy Policy</Link>
-                        <Link href="#" className="hover:text-black transition-colors">Terms of Service</Link>
+                        <Link href="#" className="hover:text-[#FDC5D5] transition-colors">Privacy Policy</Link>
+                        <Link href="#" className="hover:text-[#FDC5D5] transition-colors">Terms of Service</Link>
                     </div>
                 </div>
             </div>

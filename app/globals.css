@@ -32,3 +32,7 @@ body {
   -webkit-text-stroke: 1px black;
   color: transparent;
 }
+
+* {
+  cursor: none !important;
+}

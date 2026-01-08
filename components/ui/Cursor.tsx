@@ -46,17 +46,17 @@ export default function Cursor() {
 
     return (
         <motion.div
-            className="fixed top-0 left-0 w-5 h-5 bg-black rounded-full pointer-events-none z-[9999]"
+            className="fixed top-0 left-0 w-5 h-5 rounded-full pointer-events-none z-[9999]"
             style={{
                 translateX: "-50%",
                 translateY: "-50%",
-                mixBlendMode: "normal"
+                mixBlendMode: "difference"
             }}
             animate={{
                 x: mousePosition.x,
                 y: mousePosition.y,
                 scale: isClicking ? 0.8 : (isHovering ? 0.5 : 1),
-                backgroundColor: isHovering ? "#CCFF00" : (isClicking ? "#FF0055" : "#1C1C1C"),
+                backgroundColor: "#FDC5D5",
             }}
             transition={{
                 type: "spring",

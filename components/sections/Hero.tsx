@@ -1,9 +1,10 @@
-"use client";
-
+// Removed useScroll imports
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 
 export default function Hero() {
+    // Parallax removed
+
     return (
         <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
             <div className="container mx-auto px-6 relative z-10 text-center">
@@ -28,7 +29,10 @@ export default function Hero() {
                     >
                         Available for freelance work
                     </motion.span>
-                    <h1 className="text-7xl md:text-[10rem] font-bold tracking-tighter uppercase leading-none mb-6 text-black">
+                    <motion.h1
+                        // style={{ y }} // Parallax Removed
+                        className="text-7xl md:text-[10rem] font-bold tracking-tighter uppercase leading-none mb-6 text-black relative z-20 pointer-events-none"
+                    >
                         <motion.div variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } } }}>
                             Creative <br />
                         </motion.div>
@@ -50,7 +54,7 @@ export default function Hero() {
                             >
                                 Solutions
                             </motion.span>            </span>
-                    </h1>
+                    </motion.h1>
                     <p className="text-xl md:text-2xl text-black max-w-2xl mx-auto mb-10 leading-relaxed">
                         We build digital experiences that blend aesthetic with function.
                         AI-first design studio for the modern web.
