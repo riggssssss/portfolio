@@ -1,4 +1,5 @@
-// Removed useScroll imports
+"use client";
+
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
 

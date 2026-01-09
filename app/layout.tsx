@@ -22,7 +22,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="cursor-none">
+    <html lang="en" className="cursor-none" suppressHydrationWarning>
       <head>
         <script
           dangerouslySetInnerHTML={{

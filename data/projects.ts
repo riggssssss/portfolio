@@ -11,6 +11,16 @@ export interface Project {
 
 export const projects: Project[] = [
     {
+        id: "dabop",
+        title: "Dabop",
+        category: "E-Commerce / Ceramic",
+        image: "/proyectos/dabop/images/figure1.png",
+        description: "A handmade ceramics store featuring 3D product visualization, interactive particle physics, and dynamic color extraction.",
+        link: "/proyectos/dabop/index.html",
+        technologies: ["HTML/CSS", "Vanilla JS", "Three.js"],
+        year: "2026"
+    },
+    {
         id: "ecovision",
         title: "EcoVision AI",
         category: "Web Design / AI",
