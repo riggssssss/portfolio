@@ -38,7 +38,7 @@ export default function Marquee({ text, baseVelocity = 5 }: MarqueeProps) {
      * have to replace for wrapping that works for you or dynamically
      * calculate
      */
-    const x = useTransform(baseX, (v) => `${wrap(-20, -45, v)}%`);
+    const x = useTransform(baseX, (v) => `${wrap(0, -50, v)}%`);
 
     const directionFactor = useRef<number>(1);
     useAnimationFrame((t, delta) => {
@@ -63,10 +63,10 @@ export default function Marquee({ text, baseVelocity = 5 }: MarqueeProps) {
         <div className="relative overflow-hidden py-10 bg-transparent border-y border-black/10">
             <motion.div className="flex whitespace-nowrap" style={{ x }}>
                 <span className="text-7xl md:text-9xl font-bold uppercase tracking-tighter mr-16 text-black/90 block">
-                    {text} <span className="text-[#FDC5D5] mx-4">—</span> {text} <span className="text-[#FDC5D5] mx-4">—</span> {text} <span className="text-[#FDC5D5] mx-4">—</span> {text} <span className="text-[#FDC5D5] mx-4">—</span>
+                    Web Developer <span className="text-[#FDC5D5] mx-4">—</span> Student <span className="text-[#FDC5D5] mx-4">—</span> Creative <span className="text-[#FDC5D5] mx-4">—</span> Freelancer <span className="text-[#FDC5D5] mx-4">—</span>
                 </span>
                 <span className="text-7xl md:text-9xl font-bold uppercase tracking-tighter mr-16 text-black/90 block">
-                    {text} <span className="text-[#FDC5D5] mx-4">—</span> {text} <span className="text-[#FDC5D5] mx-4">—</span> {text} <span className="text-[#FDC5D5] mx-4">—</span> {text} <span className="text-[#FDC5D5] mx-4">—</span>
+                    Web Developer <span className="text-[#FDC5D5] mx-4">—</span> Student <span className="text-[#FDC5D5] mx-4">—</span> Creative <span className="text-[#FDC5D5] mx-4">—</span> Freelancer <span className="text-[#FDC5D5] mx-4">—</span>
                 </span>
             </motion.div>
         </div>

@@ -27,18 +27,14 @@ export default function Contact() {
                         </motion.span>
                     </h2>
                     <p className="text-xl text-black/60 max-w-md mb-12">
-                        Have a project in mind? We would love to hear from you.
+                        Have a project in mind? I would love to hear from you.
                         Fill out the form or send us an email.
                     </p>
 
                     <div className="space-y-4">
                         <div className="block">
                             <span className="text-sm text-black/40 uppercase tracking-widest block mb-1">Email</span>
-                            <a href="mailto:hello@creativeapes.design" className="text-2xl hover:text-black/70 transition-colors">hello@portfolio.design</a>
-                        </div>
-                        <div className="block">
-                            <span className="text-sm text-black/40 uppercase tracking-widest block mb-1">Phone</span>
-                            <a href="tel:+1234567890" className="text-2xl hover:text-black/70 transition-colors">+1 (555) 123-4567</a>
+                            <a href="mailto:riggs.contact@gmail.com" className="text-2xl hover:text-black/70 transition-colors">riggs.contact@gmail.com</a>
                         </div>
                     </div>
                 </div>
@@ -70,7 +66,7 @@ export default function Contact() {
                             id="message"
                             rows={4}
                             className="w-full bg-transparent border-b border-black/20 py-4 text-xl focus:border-[#FDC5D5] focus:outline-none transition-colors resize-none text-black placeholder:text-black/30"
-                            placeholder="Tell us about your project..."
+                            placeholder="Tell me about your project..."
                         />
                     </div>
 

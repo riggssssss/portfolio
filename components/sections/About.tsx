@@ -14,7 +14,7 @@ export default function About() {
                         viewport={{ once: true }}
                         className="text-5xl md:text-7xl font-bold uppercase tracking-tighter leading-[0.9] mb-8 text-black"
                     >
-                        We are <br />
+                        Hi, I'm <br />
                         <motion.span
                             initial={{
                                 WebkitTextStroke: "1px black",
@@ -27,11 +27,11 @@ export default function About() {
                             viewport={{ once: true, amount: 1 }}
                             transition={{ duration: 1.2, delay: 0.2, ease: "easeOut" }}
                         >
-                            Creative Apes
+                            Riggs
                         </motion.span>
                     </motion.h2>
 
-                    <Button href="#contact" variant="primary">Learn More</Button>
+                    <Button href="#contact" variant="primary">Let's Talk</Button>
                 </div>
 
                 <motion.div
@@ -41,21 +41,20 @@ export default function About() {
                     className="text-xl md:text-2xl text-black/80 leading-relaxed space-y-8"
                 >
                     <p>
-                        We are a digital design studio crafting premium experiences for ambitious brands.
-                        We believe in the power of <span className="font-bold text-black border-b border-black">design</span> to transform businesses and culture.
+                        Bridging the gap between creative vision and technical execution. I specialize in building digital experiences that are not just functional, but memorable.
                     </p>
                     <p>
-                        Our team blends artistic intuition with technical precision to build websites that are NOT just functional, but emotional.
+                        Driven by precision and a deep empathy for the user, I transform complex requirements into clean, scalable, and high-performance solutions.
                     </p>
 
                     <div className="grid grid-cols-2 gap-8 pt-8">
                         <div>
-                            <h4 className="text-4xl font-bold text-black mb-2">50+</h4>
-                            <span className="text-black/40 uppercase text-sm tracking-wider">Projects Delivered</span>
+                            <h4 className="text-4xl font-bold text-black mb-2">100%</h4>
+                            <span className="text-black/40 uppercase text-sm tracking-wider">Precision</span>
                         </div>
                         <div>
-                            <h4 className="text-4xl font-bold text-black mb-2">10+</h4>
-                            <span className="text-black/40 uppercase text-sm tracking-wider">Awards Won</span>
+                            <h4 className="text-4xl font-bold text-black mb-2">24/7</h4>
+                            <span className="text-black/40 uppercase text-sm tracking-wider">Support</span>
                         </div>
                     </div>
                 </motion.div>

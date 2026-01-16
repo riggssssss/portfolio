@@ -35,7 +35,7 @@ export default function Hero() {
                         className="text-7xl md:text-[10rem] font-bold tracking-tighter uppercase leading-none mb-6 text-black relative z-20 pointer-events-none"
                     >
                         <motion.div variants={{ hidden: { opacity: 0, y: 50 }, visible: { opacity: 1, y: 0, transition: { duration: 1, ease: [0.22, 1, 0.36, 1] } } }}>
-                            Creative <br />
+                            Building Your <br />
                         </motion.div>
                         <span>
                             <motion.span
@@ -53,12 +53,11 @@ export default function Hero() {
                                     ease: [0.22, 1, 0.36, 1] // Custom refined bezier
                                 }}
                             >
-                                Solutions
+                                Digital Future
                             </motion.span>            </span>
                     </motion.h1>
                     <p className="text-xl md:text-2xl text-black max-w-2xl mx-auto mb-10 leading-relaxed">
-                        We build digital experiences that blend aesthetic with function.
-                        AI-first design studio for the modern web.
+                        Turning ideas into digital reality. I'm a passionate student and freelancer ready to help you grow.
                     </p>
 
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
